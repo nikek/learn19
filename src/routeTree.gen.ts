@@ -14,6 +14,8 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
 import { Route as UseTransitionPendingButtonImport } from './routes/useTransition/pendingButton'
+import { Route as UseOptimisticCalculationImport } from './routes/useOptimistic/calculation'
+import { Route as UseOptimisticAddToListImport } from './routes/useOptimistic/addToList'
 
 // Create/Update Routes
 
@@ -37,6 +39,18 @@ const UseTransitionPendingButtonRoute = UseTransitionPendingButtonImport.update(
   } as any,
 )
 
+const UseOptimisticCalculationRoute = UseOptimisticCalculationImport.update({
+  id: '/useOptimistic/calculation',
+  path: '/useOptimistic/calculation',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const UseOptimisticAddToListRoute = UseOptimisticAddToListImport.update({
+  id: '/useOptimistic/addToList',
+  path: '/useOptimistic/addToList',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -55,6 +69,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
+    '/useOptimistic/addToList': {
+      id: '/useOptimistic/addToList'
+      path: '/useOptimistic/addToList'
+      fullPath: '/useOptimistic/addToList'
+      preLoaderRoute: typeof UseOptimisticAddToListImport
+      parentRoute: typeof rootRoute
+    }
+    '/useOptimistic/calculation': {
+      id: '/useOptimistic/calculation'
+      path: '/useOptimistic/calculation'
+      fullPath: '/useOptimistic/calculation'
+      preLoaderRoute: typeof UseOptimisticCalculationImport
+      parentRoute: typeof rootRoute
+    }
     '/useTransition/pendingButton': {
       id: '/useTransition/pendingButton'
       path: '/useTransition/pendingButton'
@@ -70,12 +98,16 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
+  '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
+  '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
 }
 
@@ -83,27 +115,49 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
+  '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/useTransition/pendingButton'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/useOptimistic/addToList'
+    | '/useOptimistic/calculation'
+    | '/useTransition/pendingButton'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/useTransition/pendingButton'
-  id: '__root__' | '/' | '/about' | '/useTransition/pendingButton'
+  to:
+    | '/'
+    | '/about'
+    | '/useOptimistic/addToList'
+    | '/useOptimistic/calculation'
+    | '/useTransition/pendingButton'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/useOptimistic/addToList'
+    | '/useOptimistic/calculation'
+    | '/useTransition/pendingButton'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  UseOptimisticAddToListRoute: typeof UseOptimisticAddToListRoute
+  UseOptimisticCalculationRoute: typeof UseOptimisticCalculationRoute
   UseTransitionPendingButtonRoute: typeof UseTransitionPendingButtonRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  UseOptimisticAddToListRoute: UseOptimisticAddToListRoute,
+  UseOptimisticCalculationRoute: UseOptimisticCalculationRoute,
   UseTransitionPendingButtonRoute: UseTransitionPendingButtonRoute,
 }
 
@@ -119,6 +173,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/useOptimistic/addToList",
+        "/useOptimistic/calculation",
         "/useTransition/pendingButton"
       ]
     },
@@ -127,6 +183,12 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/useOptimistic/addToList": {
+      "filePath": "useOptimistic/addToList.tsx"
+    },
+    "/useOptimistic/calculation": {
+      "filePath": "useOptimistic/calculation.tsx"
     },
     "/useTransition/pendingButton": {
       "filePath": "useTransition/pendingButton.tsx"
