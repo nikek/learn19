@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
+import { Route as UseTransitionPendingButtonImport } from './routes/useTransition/pendingButton'
 
 // Create/Update Routes
 
@@ -27,6 +28,14 @@ const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const UseTransitionPendingButtonRoute = UseTransitionPendingButtonImport.update(
+  {
+    id: '/useTransition/pendingButton',
+    path: '/useTransition/pendingButton',
+    getParentRoute: () => rootRoute,
+  } as any,
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -46,6 +55,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
+    '/useTransition/pendingButton': {
+      id: '/useTransition/pendingButton'
+      path: '/useTransition/pendingButton'
+      fullPath: '/useTransition/pendingButton'
+      preLoaderRoute: typeof UseTransitionPendingButtonImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -54,36 +70,41 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/about' | '/useTransition/pendingButton'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/useTransition/pendingButton'
+  id: '__root__' | '/' | '/about' | '/useTransition/pendingButton'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  UseTransitionPendingButtonRoute: typeof UseTransitionPendingButtonRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  UseTransitionPendingButtonRoute: UseTransitionPendingButtonRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,7 +118,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/about",
+        "/useTransition/pendingButton"
       ]
     },
     "/": {
@@ -105,6 +127,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/useTransition/pendingButton": {
+      "filePath": "useTransition/pendingButton.tsx"
     }
   }
 }

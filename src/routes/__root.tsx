@@ -7,6 +7,7 @@ export const Route = createRootRoute({
       <nav className="main-nav">
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
+        <Link to="/useTransition/pendingButton">Pending Button</Link>
       </nav>
       <hr />
       <Outlet />
