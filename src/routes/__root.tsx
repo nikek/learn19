@@ -10,6 +10,8 @@ export const Route = createRootRoute({
         <Link to="/useTransition/pendingButton">Pending Button</Link>
         <Link to="/useOptimistic/calculation">Calculation</Link>
         <Link to="/useOptimistic/addToList">Add to List</Link>
+        <Link to="/useActionState/counter">Counter</Link>
+        <Link to="/useActionState/formState">Form State</Link>
       </nav>
       <hr />
       <Outlet />

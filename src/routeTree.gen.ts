@@ -16,6 +16,8 @@ import { Route as IndexImport } from './routes/index'
 import { Route as UseTransitionPendingButtonImport } from './routes/useTransition/pendingButton'
 import { Route as UseOptimisticCalculationImport } from './routes/useOptimistic/calculation'
 import { Route as UseOptimisticAddToListImport } from './routes/useOptimistic/addToList'
+import { Route as UseActionStateFormStateImport } from './routes/useActionState/formState'
+import { Route as UseActionStateCounterImport } from './routes/useActionState/counter'
 
 // Create/Update Routes
 
@@ -51,6 +53,18 @@ const UseOptimisticAddToListRoute = UseOptimisticAddToListImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const UseActionStateFormStateRoute = UseActionStateFormStateImport.update({
+  id: '/useActionState/formState',
+  path: '/useActionState/formState',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const UseActionStateCounterRoute = UseActionStateCounterImport.update({
+  id: '/useActionState/counter',
+  path: '/useActionState/counter',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -67,6 +81,20 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutImport
+      parentRoute: typeof rootRoute
+    }
+    '/useActionState/counter': {
+      id: '/useActionState/counter'
+      path: '/useActionState/counter'
+      fullPath: '/useActionState/counter'
+      preLoaderRoute: typeof UseActionStateCounterImport
+      parentRoute: typeof rootRoute
+    }
+    '/useActionState/formState': {
+      id: '/useActionState/formState'
+      path: '/useActionState/formState'
+      fullPath: '/useActionState/formState'
+      preLoaderRoute: typeof UseActionStateFormStateImport
       parentRoute: typeof rootRoute
     }
     '/useOptimistic/addToList': {
@@ -98,6 +126,8 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useActionState/counter': typeof UseActionStateCounterRoute
+  '/useActionState/formState': typeof UseActionStateFormStateRoute
   '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
   '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
@@ -106,6 +136,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useActionState/counter': typeof UseActionStateCounterRoute
+  '/useActionState/formState': typeof UseActionStateFormStateRoute
   '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
   '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
@@ -115,6 +147,8 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/useActionState/counter': typeof UseActionStateCounterRoute
+  '/useActionState/formState': typeof UseActionStateFormStateRoute
   '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
   '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
@@ -125,6 +159,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/useActionState/counter'
+    | '/useActionState/formState'
     | '/useOptimistic/addToList'
     | '/useOptimistic/calculation'
     | '/useTransition/pendingButton'
@@ -132,6 +168,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/useActionState/counter'
+    | '/useActionState/formState'
     | '/useOptimistic/addToList'
     | '/useOptimistic/calculation'
     | '/useTransition/pendingButton'
@@ -139,6 +177,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/useActionState/counter'
+    | '/useActionState/formState'
     | '/useOptimistic/addToList'
     | '/useOptimistic/calculation'
     | '/useTransition/pendingButton'
@@ -148,6 +188,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  UseActionStateCounterRoute: typeof UseActionStateCounterRoute
+  UseActionStateFormStateRoute: typeof UseActionStateFormStateRoute
   UseOptimisticAddToListRoute: typeof UseOptimisticAddToListRoute
   UseOptimisticCalculationRoute: typeof UseOptimisticCalculationRoute
   UseTransitionPendingButtonRoute: typeof UseTransitionPendingButtonRoute
@@ -156,6 +198,8 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  UseActionStateCounterRoute: UseActionStateCounterRoute,
+  UseActionStateFormStateRoute: UseActionStateFormStateRoute,
   UseOptimisticAddToListRoute: UseOptimisticAddToListRoute,
   UseOptimisticCalculationRoute: UseOptimisticCalculationRoute,
   UseTransitionPendingButtonRoute: UseTransitionPendingButtonRoute,
@@ -173,6 +217,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/useActionState/counter",
+        "/useActionState/formState",
         "/useOptimistic/addToList",
         "/useOptimistic/calculation",
         "/useTransition/pendingButton"
@@ -183,6 +229,12 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/useActionState/counter": {
+      "filePath": "useActionState/counter.tsx"
+    },
+    "/useActionState/formState": {
+      "filePath": "useActionState/formState.tsx"
     },
     "/useOptimistic/addToList": {
       "filePath": "useOptimistic/addToList.tsx"
