@@ -16,6 +16,9 @@ import { Route as IndexImport } from './routes/index'
 import { Route as UseTransitionPendingButtonImport } from './routes/useTransition/pendingButton'
 import { Route as UseOptimisticCalculationImport } from './routes/useOptimistic/calculation'
 import { Route as UseOptimisticAddToListImport } from './routes/useOptimistic/addToList'
+import { Route as UseDeferredValueHeavyComputationImport } from './routes/useDeferredValue/heavyComputation'
+import { Route as UseDeferredValueFilterListImport } from './routes/useDeferredValue/filterList'
+import { Route as UseDeferredValueAsyncFilterImport } from './routes/useDeferredValue/asyncFilter'
 import { Route as UseActionStateFormStateImport } from './routes/useActionState/formState'
 import { Route as UseActionStateCounterImport } from './routes/useActionState/counter'
 
@@ -52,6 +55,28 @@ const UseOptimisticAddToListRoute = UseOptimisticAddToListImport.update({
   path: '/useOptimistic/addToList',
   getParentRoute: () => rootRoute,
 } as any)
+
+const UseDeferredValueHeavyComputationRoute =
+  UseDeferredValueHeavyComputationImport.update({
+    id: '/useDeferredValue/heavyComputation',
+    path: '/useDeferredValue/heavyComputation',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const UseDeferredValueFilterListRoute = UseDeferredValueFilterListImport.update(
+  {
+    id: '/useDeferredValue/filterList',
+    path: '/useDeferredValue/filterList',
+    getParentRoute: () => rootRoute,
+  } as any,
+)
+
+const UseDeferredValueAsyncFilterRoute =
+  UseDeferredValueAsyncFilterImport.update({
+    id: '/useDeferredValue/asyncFilter',
+    path: '/useDeferredValue/asyncFilter',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 const UseActionStateFormStateRoute = UseActionStateFormStateImport.update({
   id: '/useActionState/formState',
@@ -97,6 +122,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UseActionStateFormStateImport
       parentRoute: typeof rootRoute
     }
+    '/useDeferredValue/asyncFilter': {
+      id: '/useDeferredValue/asyncFilter'
+      path: '/useDeferredValue/asyncFilter'
+      fullPath: '/useDeferredValue/asyncFilter'
+      preLoaderRoute: typeof UseDeferredValueAsyncFilterImport
+      parentRoute: typeof rootRoute
+    }
+    '/useDeferredValue/filterList': {
+      id: '/useDeferredValue/filterList'
+      path: '/useDeferredValue/filterList'
+      fullPath: '/useDeferredValue/filterList'
+      preLoaderRoute: typeof UseDeferredValueFilterListImport
+      parentRoute: typeof rootRoute
+    }
+    '/useDeferredValue/heavyComputation': {
+      id: '/useDeferredValue/heavyComputation'
+      path: '/useDeferredValue/heavyComputation'
+      fullPath: '/useDeferredValue/heavyComputation'
+      preLoaderRoute: typeof UseDeferredValueHeavyComputationImport
+      parentRoute: typeof rootRoute
+    }
     '/useOptimistic/addToList': {
       id: '/useOptimistic/addToList'
       path: '/useOptimistic/addToList'
@@ -128,6 +174,9 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/useActionState/counter': typeof UseActionStateCounterRoute
   '/useActionState/formState': typeof UseActionStateFormStateRoute
+  '/useDeferredValue/asyncFilter': typeof UseDeferredValueAsyncFilterRoute
+  '/useDeferredValue/filterList': typeof UseDeferredValueFilterListRoute
+  '/useDeferredValue/heavyComputation': typeof UseDeferredValueHeavyComputationRoute
   '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
   '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
@@ -138,6 +187,9 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/useActionState/counter': typeof UseActionStateCounterRoute
   '/useActionState/formState': typeof UseActionStateFormStateRoute
+  '/useDeferredValue/asyncFilter': typeof UseDeferredValueAsyncFilterRoute
+  '/useDeferredValue/filterList': typeof UseDeferredValueFilterListRoute
+  '/useDeferredValue/heavyComputation': typeof UseDeferredValueHeavyComputationRoute
   '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
   '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
@@ -149,6 +201,9 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/useActionState/counter': typeof UseActionStateCounterRoute
   '/useActionState/formState': typeof UseActionStateFormStateRoute
+  '/useDeferredValue/asyncFilter': typeof UseDeferredValueAsyncFilterRoute
+  '/useDeferredValue/filterList': typeof UseDeferredValueFilterListRoute
+  '/useDeferredValue/heavyComputation': typeof UseDeferredValueHeavyComputationRoute
   '/useOptimistic/addToList': typeof UseOptimisticAddToListRoute
   '/useOptimistic/calculation': typeof UseOptimisticCalculationRoute
   '/useTransition/pendingButton': typeof UseTransitionPendingButtonRoute
@@ -161,6 +216,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/useActionState/counter'
     | '/useActionState/formState'
+    | '/useDeferredValue/asyncFilter'
+    | '/useDeferredValue/filterList'
+    | '/useDeferredValue/heavyComputation'
     | '/useOptimistic/addToList'
     | '/useOptimistic/calculation'
     | '/useTransition/pendingButton'
@@ -170,6 +228,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/useActionState/counter'
     | '/useActionState/formState'
+    | '/useDeferredValue/asyncFilter'
+    | '/useDeferredValue/filterList'
+    | '/useDeferredValue/heavyComputation'
     | '/useOptimistic/addToList'
     | '/useOptimistic/calculation'
     | '/useTransition/pendingButton'
@@ -179,6 +240,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/useActionState/counter'
     | '/useActionState/formState'
+    | '/useDeferredValue/asyncFilter'
+    | '/useDeferredValue/filterList'
+    | '/useDeferredValue/heavyComputation'
     | '/useOptimistic/addToList'
     | '/useOptimistic/calculation'
     | '/useTransition/pendingButton'
@@ -190,6 +254,9 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   UseActionStateCounterRoute: typeof UseActionStateCounterRoute
   UseActionStateFormStateRoute: typeof UseActionStateFormStateRoute
+  UseDeferredValueAsyncFilterRoute: typeof UseDeferredValueAsyncFilterRoute
+  UseDeferredValueFilterListRoute: typeof UseDeferredValueFilterListRoute
+  UseDeferredValueHeavyComputationRoute: typeof UseDeferredValueHeavyComputationRoute
   UseOptimisticAddToListRoute: typeof UseOptimisticAddToListRoute
   UseOptimisticCalculationRoute: typeof UseOptimisticCalculationRoute
   UseTransitionPendingButtonRoute: typeof UseTransitionPendingButtonRoute
@@ -200,6 +267,9 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   UseActionStateCounterRoute: UseActionStateCounterRoute,
   UseActionStateFormStateRoute: UseActionStateFormStateRoute,
+  UseDeferredValueAsyncFilterRoute: UseDeferredValueAsyncFilterRoute,
+  UseDeferredValueFilterListRoute: UseDeferredValueFilterListRoute,
+  UseDeferredValueHeavyComputationRoute: UseDeferredValueHeavyComputationRoute,
   UseOptimisticAddToListRoute: UseOptimisticAddToListRoute,
   UseOptimisticCalculationRoute: UseOptimisticCalculationRoute,
   UseTransitionPendingButtonRoute: UseTransitionPendingButtonRoute,
@@ -219,6 +289,9 @@ export const routeTree = rootRoute
         "/about",
         "/useActionState/counter",
         "/useActionState/formState",
+        "/useDeferredValue/asyncFilter",
+        "/useDeferredValue/filterList",
+        "/useDeferredValue/heavyComputation",
         "/useOptimistic/addToList",
         "/useOptimistic/calculation",
         "/useTransition/pendingButton"
@@ -235,6 +308,15 @@ export const routeTree = rootRoute
     },
     "/useActionState/formState": {
       "filePath": "useActionState/formState.tsx"
+    },
+    "/useDeferredValue/asyncFilter": {
+      "filePath": "useDeferredValue/asyncFilter.tsx"
+    },
+    "/useDeferredValue/filterList": {
+      "filePath": "useDeferredValue/filterList.tsx"
+    },
+    "/useDeferredValue/heavyComputation": {
+      "filePath": "useDeferredValue/heavyComputation.tsx"
     },
     "/useOptimistic/addToList": {
       "filePath": "useOptimistic/addToList.tsx"

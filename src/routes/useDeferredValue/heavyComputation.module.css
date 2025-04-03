@@ -1,0 +1,60 @@
+.container {
+  padding: 1rem;
+}
+
+.inputWrapper {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.input {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.deferredStatus {
+  color: #2563eb;
+}
+
+.resultsList {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  overflow: auto;
+  height: 400px;
+}
+
+.resultItem {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.resultItem:last-child {
+  border-bottom: none;
+}
+
+.sliderWrapper {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  margin-left: 1rem;
+  width: 200px;
+}
